@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xiaodabao.xyz/"/>
-  <updated>2017-10-31T08:29:46.478Z</updated>
+  <updated>2017-10-31T13:22:43.067Z</updated>
   <id>http://blog.xiaodabao.xyz/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test-google-tag-manager</title>
+    <link href="http://blog.xiaodabao.xyz/2017/10/31/test-google-tag-manager/"/>
+    <id>http://blog.xiaodabao.xyz/2017/10/31/test-google-tag-manager/</id>
+    <published>2017-10-31T13:21:07.000Z</published>
+    <updated>2017-10-31T13:22:43.067Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="学习google强大的埋点工具————google-tag-manager"><a href="#学习google强大的埋点工具————google-tag-manager" class="headerlink" title="学习google强大的埋点工具————google  tag manager"></a>学习google强大的埋点工具————google  tag manager</h1><h2 id="首先，看看这个博客还能不能正常使用"><a href="#首先，看看这个博客还能不能正常使用" class="headerlink" title="首先，看看这个博客还能不能正常使用"></a>首先，看看这个博客还能不能正常使用</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;学习google强大的埋点工具————google-tag-manager&quot;&gt;&lt;a href=&quot;#学习google强大的埋点工具————google-tag-manager&quot; class=&quot;headerlink&quot; title=&quot;学习google强大的埋点工具———
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>angular+webpack项目脚手架</title>
