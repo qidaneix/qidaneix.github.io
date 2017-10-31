@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108899056-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108899056-1');
+  </script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="EditorConfig,.editorconfig,代码规范管理," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="time machine" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;代码规范（或称代码格式或代码风格）管理是程序员的一个老大难的问题。 &amp;emsp;&amp;emsp;首先，程序员往往会对不同的语言设定不同的代码规范。所谓代码规范，是指对所编写的代码的一些例如字符集（GBK&amp;amp;UTF-8）、缩进字符类型（TAB&amp;amp;Space）、缩进字符个数（2个&amp;amp;4个）等可设置项进行一定的约束。这些代码规范也许不是语言强制规定的（python对">
+<meta name="keywords" content="EditorConfig,.editorconfig,代码规范管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码规范管理神器——EditorConfig">
+<meta property="og:url" content="http://blog.xiaodabao.xyz/2017/02/05/editor-config/index.html">
+<meta property="og:site_name" content="time machine">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;代码规范（或称代码格式或代码风格）管理是程序员的一个老大难的问题。 &amp;emsp;&amp;emsp;首先，程序员往往会对不同的语言设定不同的代码规范。所谓代码规范，是指对所编写的代码的一些例如字符集（GBK&amp;amp;UTF-8）、缩进字符类型（TAB&amp;amp;Space）、缩进字符个数（2个&amp;amp;4个）等可设置项进行一定的约束。这些代码规范也许不是语言强制规定的（python对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://editorconfig.org/logo.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/noNeed.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/need.png">
+<meta property="og:updated_time" content="2017-10-31T08:29:46.476Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代码规范管理神器——EditorConfig">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;代码规范（或称代码格式或代码风格）管理是程序员的一个老大难的问题。 &amp;emsp;&amp;emsp;首先，程序员往往会对不同的语言设定不同的代码规范。所谓代码规范，是指对所编写的代码的一些例如字符集（GBK&amp;amp;UTF-8）、缩进字符类型（TAB&amp;amp;Space）、缩进字符个数（2个&amp;amp;4个）等可设置项进行一定的约束。这些代码规范也许不是语言强制规定的（python对">
+<meta name="twitter:image" content="http://editorconfig.org/logo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.xiaodabao.xyz/2017/02/05/editor-config/"/>
+
+
+
+
+
+  <title>代码规范管理神器——EditorConfig | time machine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">time machine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光机</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'qnVLz9vtPsfc-1LWUsJy','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.xiaodabao.xyz/2017/02/05/editor-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖大宝">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sb.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="time machine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">代码规范管理神器——EditorConfig</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-05T21:07:51+08:00">
+                2017-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术周边/" itemprop="url" rel="index">
+                    <span itemprop="name">技术周边</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/05/editor-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/05/editor-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;代码规范（或称代码格式或代码风格）管理是程序员的一个老大难的问题。</p>
+<p>&emsp;&emsp;首先，程序员往往会对不同的语言设定不同的代码规范。所谓代码规范，是指对所编写的代码的一些例如字符集（<em>GBK</em>&amp;<em>UTF-8</em>）、缩进字符类型（<em>TAB</em>&amp;<em>Space</em>）、缩进字符个数（2个&amp;4个）等可设置项进行一定的约束。这些代码规范也许不是语言强制规定的（python对代码缩进有强制规定），但是对于所编写代码的可读性和可维护性非常重要。其次，每个程序员都要面对不止一种代码，例如前端程序员，使用HTML、css、JavaScript三种语言都是家常便饭，更不用说typescript、scss等语言包装。而每一种语言又都有其合适的代码规范，例如HTML嵌套较多，若4空格缩进会使单行过长，所以适合2空格缩进，JavaScript则习惯于4空格缩进，使代码层次清晰，可读性强。但是，在同一编辑器中切换不同的代码格式是一件比较麻烦的事，有些编辑可以为不同语言设置不同格式（例如webstrom、sublime），有些则不行（VS Code？我半天没有找到）。而且，不同的编辑器对代码格式的设置位置也不相同，若程序员需要切换工作环境（使用不同的编辑器或者在不同电脑上的相同编辑器），要寻找这些编辑器的代码格式设置位置并进行重新设置就会变得非常麻烦。不同语言的代码风格和不同的编辑器让代码规范设定变成一个难题，为了解决这个难题，<strong>EditorConfig</strong>应运而生。</p>
+<p><img src="http://editorconfig.org/logo.png" alt="EditorConfig"></p>
+<p>&emsp;&emsp;EditorConfig就是上面那只戴着眼镜的老鼠。它对代码格式配置的思想很简单：不再是以某一种语言或者某一种编辑器为单位，而是以项目工程为单位进行格式配置。程序员在工程根目录下创建名为<em>.editorconfig</em>的文件，作为这个工程中所编写的所有代码的格式配置文件，<em>.editorconfig</em>的文件具有相对于各种编辑器而言统一的语法来对各种语言格式进行设置，不同的编辑器通过自带或者安装插件的形式来支持EditorConfig的功能，支持EditorConfig功能的编辑器会自动解析<em>.editorconfig</em>文件，获取工程中各文件代码的格式设定信息，从而进行对应设置，程序员只需要将工程中的各种语言的格式规范写进该<em>.editorconfig</em>文件中，即可轻松解决在多种同语言、不同编辑器的条件下，为工程配置一致的代码规范的问题。</p>
+<p>&emsp;&emsp;下面是<a href="http://editorconfig.org/" target="_blank" rel="external">EditorConfig官网</a>主要内容的中文翻译，<em>版权归EditorConfig所有，侵删</em>。</p>
+<h1 id="嘛是EditorConfig？"><a href="#嘛是EditorConfig？" class="headerlink" title="嘛是EditorConfig？"></a>嘛是EditorConfig？</h1><p>&emsp;&emsp;EditorConfig帮助开发者在不同的编辑器或者IDE之间设定和维护一致的代码风格。EditorConfig由一个定义了代码风格的<strong>配置文件</strong>和一个可以使文本编辑器读取配置文件并将代码设置为配置文件中定义好的代码风格的<strong>编辑器插件</strong>组成。EditorConfig配置文件具有优秀的可读性，并可以在版本控制器（<em>git</em>、<em>SVN</em>等）的管理下运行良好。</p>
+<h1 id="EditorConfig配置文件长啥样？"><a href="#EditorConfig配置文件长啥样？" class="headerlink" title="EditorConfig配置文件长啥样？"></a>EditorConfig配置文件长啥样？</h1><h2 id="配置文件示例"><a href="#配置文件示例" class="headerlink" title="配置文件示例"></a>配置文件示例</h2><p>&emsp;&emsp;下面是一个<em>.editorconfig</em>配置文件的示例，这个配置文件为Python和JavaScript文件设定了行尾（end-of-line）和缩进（indent）风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"># EditorConfig is awesome: http://EditorConfig.org</div><div class="line"></div><div class="line"># top-most EditorConfig file</div><div class="line"># 最顶层的EditorConfig文件</div><div class="line">root = true</div><div class="line"></div><div class="line"># Unix-style newlines with a newline ending every file</div><div class="line"># Unix样式的换行符，换行符结束于每个文件</div><div class="line">[*]</div><div class="line">end_of_line = lf</div><div class="line">insert_final_newline = true</div><div class="line"></div><div class="line"># Matches multiple files with brace expansion notation</div><div class="line"># Set default charset</div><div class="line"># 使用大括号扩展符号匹配多个文件</div><div class="line"># 设置默认字符集</div><div class="line">[*.&#123;js,py&#125;]</div><div class="line">charset = utf-8</div><div class="line"></div><div class="line"># 4 space indentation</div><div class="line"># 4空格缩进</div><div class="line">[*.py]</div><div class="line">indent_style = space</div><div class="line">indent_size = 4</div><div class="line"></div><div class="line"># Tab indentation (no size specified)</div><div class="line"># 制表符缩进（未指定大小）</div><div class="line">[Makefile]</div><div class="line">indent_style = tab</div><div class="line"></div><div class="line"># Indentation override for all JS under lib directory</div><div class="line"># 覆盖lib目录下所有的JS的缩进格式</div><div class="line">[lib/**.js]</div><div class="line">indent_style = space</div><div class="line">indent_size = 2</div><div class="line"></div><div class="line"># Matches the exact files either package.json or .travis.yml</div><div class="line"># 匹配确切的package.json或.travis.yml文件</div><div class="line">[&#123;package.json,.travis.yml&#125;]</div><div class="line">indent_style = space</div><div class="line">indent_size = 2</div></pre></td></tr></table></figure>
+<p>&emsp;&emsp;可以在wiki中<a href="https://github.com/editorconfig/editorconfig/wiki/Projects-Using-EditorConfig" target="_blank" rel="external">工程中使用的EditorConfig配置文件</a>中查看在真实环境中的配置文件案例。</p>
+<h2 id="上面这些写在配置文件中的文件搁哪呢？"><a href="#上面这些写在配置文件中的文件搁哪呢？" class="headerlink" title="上面这些写在配置文件中的文件搁哪呢？"></a>上面这些写在配置文件中的文件搁哪呢？</h2><p>&emsp;&emsp;当打开一个文件时，EditorConfig插件将会在所打开的文件的目录及其每个上级目录中寻找一个名为<em>.editorconfig</em>的文件。当到达该文件的根路径或者寻找到一个写有<em>root=true</em>的EditorConfig配置文件时，将会停止寻找<em>.editorconfig</em>文件。</p>
+<p>&emsp;&emsp;EditorConfig配置文件将会从上至下被读取，并且最靠近的EditorConfig文件将会最晚读取。匹配上EditorConfig配置文件某一节的文件，它的内容将会按照配置文件属性设置的读取顺序被加载对应代码风格，因此，更接近这些文件的属性设置将会具有更高的优先级。</p>
+<p>&emsp;&emsp;<strong>对Windows系统使用者：</strong>为了在Windows资源管理器中创建<em>.editorconfig</em>文件，你们需要创建一个名为<em>.editorconfig.</em>的文件，Windows资源管理器将会自动重命名为<em>.editorconfig</em>文件。</p>
+<h2 id="配置文件格式细节"><a href="#配置文件格式细节" class="headerlink" title="配置文件格式细节"></a>配置文件格式细节</h2><p>&emsp;&emsp;EditorConfig配置文件使用与<a href="https://docs.python.org/2/library/configparser.html" target="_blank" rel="external">Python ConfigParser Library</a>使用的格式相兼容的INI格式，但在节名称中允许使用<em>[</em>和<em>]</em>符号。节名称使用<a href="https://en.wikipedia.org/wiki/Glob_(programming" target="_blank" rel="external">globs</a>)文件路径格式，与<a href="http://manpages.ubuntu.com/manpages/intrepid/man5/gitignore.5.html#contenttoc2" target="_blank" rel="external">gitignore</a>所接受的格式相似。正斜杠（<em>/</em>）用作路径分隔符，八角符（<em>＃</em>）或分号（<em>;</em>）用作注释。注释应当独占一行。EditorConfig配置文件应使用UTF-8编码，使用<em>CRLF</em>或<em>LF</em>行分隔符。</p>
+<p>&emsp;&emsp;下面将解释glob文件路径模式和EditorConfig当前支持的属性。</p>
+<h3 id="通配符模式"><a href="#通配符模式" class="headerlink" title="通配符模式"></a>通配符模式</h3><p>&emsp;&emsp;在通配符匹配的节名称中识别的特殊字符：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>*</em></td>
+<td>匹配任何字符串，除了路径分隔符（<em>/</em>）</td>
+</tr>
+<tr>
+<td><em>**</em></td>
+<td>匹配任何字符串</td>
+</tr>
+<tr>
+<td><em>?</em></td>
+<td>匹配任何单个字符</td>
+</tr>
+<tr>
+<td><em>[name]</em></td>
+<td>匹配包含在<em>name</em>中的单个字符</td>
+</tr>
+<tr>
+<td><em>[!name]</em></td>
+<td>匹配不包含在<em>name</em>中的单个字符</td>
+</tr>
+<tr>
+<td><em>{s1,s2,s3}</em></td>
+<td>匹配任何给定的字符串（用逗号分隔）（<strong>在EditorConfig Core 0.11.0版本之后可用</strong>）</td>
+</tr>
+<tr>
+<td><em>{num1..num2}</em></td>
+<td>匹配<em>num1</em>和<em>num2</em>之间的任何整型数字，<em>num1</em>和<em>num2</em>既可以为整数也可以为负数</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;&emsp;特殊字符可以用反斜杠转义，因此不会被解释为通配符模式。</p>
+<h3 id="支持的属性"><a href="#支持的属性" class="headerlink" title="支持的属性"></a>支持的属性</h3><p>&emsp;&emsp;请注意并不是每一个插件都支持所有的属性。在wiki中有一个<a href="https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties" target="_blank" rel="external">完整的属性列表</a></p>
+<ul>
+<li><strong>indent_style</strong>：设置为“<em>tab</em>”或“<em>space</em>”以分别使用硬制表符或软制表符。</li>
+<li><strong>indent_size</strong>：定义一个用于每个缩进级别的列数和软制表符的宽度（如果支持的话）的整数。当设置为“<em>tab</em>”时，将会使用<strong>tab_width</strong>的属性值（如果指定了的话）。</li>
+<li><strong>tab_width</strong>：定义一个用于表示制表符字符的列数的整数。 这默认为<strong>indent_size</strong>的值，并且通常不需要指定。</li>
+<li><strong>end_of_line</strong>：设置为<em>lf</em>，<em>cr</em>或<em>crlf</em>以控制如何表示换行符。</li>
+<li><strong>charset</strong>：设置为<em>latin1</em>，<em>utf-8</em>，<em>utf-8-bom</em>，<em>utf-16be</em>或<em>utf-16le</em>以控制字符集。不建议使用<em>utf-8-bom</em>。</li>
+<li><strong>trim_trailing_whitespace</strong>：设置为“<em>true</em>”以删除换行符之前的任何空格字符，“<em>false</em>”则反之。</li>
+<li><strong>insert_final_newline</strong>：设置为“<em>true</em>”以确保文件在保存时以换行符结束，“<em>false</em>”则反之。</li>
+<li><strong>root</strong>：应放在文件顶部并在任何节之外指定的特殊属性。设置为“<em>true</em>”可停止为当前文件查找<em>.editorconfig</em>文件。</li>
+</ul>
+<p>&emsp;&emsp;当前所有属性和值都不区分大小写。它们在解析时转换为小写。通常，如果一个属性并未指定值，则将使用编辑器设置，即EditorConfig对该部分不起作用。</p>
+<p>&emsp;&emsp;EditorConfig的某些属性不指定确定的值是可以接受的，并且常常建议如此做。例如，不需要指定<strong>tab_width</strong>，除非它与<strong>indent_size</strong>的值不同。此外，当<strong>indent_style</strong>设置为“<em>tab</em>”时，可能需要保留<strong>indent_size</strong>不指定，以便读者可以使用其首选缩进宽度查看文件。此外，如果某个属性在你的项目中未标准化（例如<strong>end_of_line</strong>），最好将其留空。</p>
+<p>&emsp;&emsp;对于任何属性，“<em>unset</em>”的值是删除该属性的效果，即使之前已经设置过它。例如，将添加<em>indent_size=unset</em>语句可以使<strong>indent_size</strong>属性失效（并使用编辑器默认设置）。</p>
+<h1 id="不需要安装插件的编辑器（IDE）"><a href="#不需要安装插件的编辑器（IDE）" class="headerlink" title="不需要安装插件的编辑器（IDE）"></a>不需要安装插件的编辑器（IDE）</h1><p>&emsp;&emsp;下面这些编辑器原生支持EditorConfig。EditorConfig可以正常使用。</p>
+<p><img src="http://oiml7svqr.bkt.clouddn.com/noNeed.png" alt="不需要安装插件的编辑器（IDE）"></p>
+<h1 id="需要下载安装插件的编辑器（IDE）"><a href="#需要下载安装插件的编辑器（IDE）" class="headerlink" title="需要下载安装插件的编辑器（IDE）"></a>需要下载安装插件的编辑器（IDE）</h1><p>&emsp;&emsp;为了在下面这些编辑器中使用EditorConfig，你需要安装插件。</p>
+<p><img src="http://oiml7svqr.bkt.clouddn.com/need.png" alt="需要下载安装插件的编辑器（IDE）"></p>
+<h1 id="贡献EditorConfig"><a href="#贡献EditorConfig" class="headerlink" title="贡献EditorConfig"></a>贡献EditorConfig</h1><h2 id="反馈给我们"><a href="#反馈给我们" class="headerlink" title="反馈给我们"></a>反馈给我们</h2><p><em>参见<a href="http://editorconfig.org/" target="_blank" rel="external">EditorConfig官网</a></em></p>
+<h2 id="创建插件"><a href="#创建插件" class="headerlink" title="创建插件"></a>创建插件</h2><p><em>参见<a href="http://editorconfig.org/" target="_blank" rel="external">EditorConfig官网</a></em></p>
+<h1 id="主要贡献者"><a href="#主要贡献者" class="headerlink" title="主要贡献者"></a>主要贡献者</h1><p><em>参见<a href="http://editorconfig.org/" target="_blank" rel="external">EditorConfig官网</a></em></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/EditorConfig/" rel="tag"># EditorConfig</a>
+          
+            <a href="/tags/editorconfig/" rel="tag"># .editorconfig</a>
+          
+            <a href="/tags/代码规范管理/" rel="tag"># 代码规范管理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/05/vs-code-keyboard-shortcuts/" rel="next" title="Windows版VS Code快捷键总结">
+                <i class="fa fa-chevron-left"></i> Windows版VS Code快捷键总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/12/yuan-xiao-jie/" rel="prev" title="元宵节快乐">
+                元宵节快乐 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/05/editor-config/"
+           data-title="代码规范管理神器——EditorConfig" data-url="http://blog.xiaodabao.xyz/2017/02/05/editor-config/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/sb.jpg"
+               alt="肖大宝" />
+          <p class="site-author-name" itemprop="name">肖大宝</p>
+           
+              <p class="site-description motion-element" itemprop="description">我觉得我还需要学习一点人生的经验</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#嘛是EditorConfig？"><span class="nav-number">1.</span> <span class="nav-text">嘛是EditorConfig？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EditorConfig配置文件长啥样？"><span class="nav-number">2.</span> <span class="nav-text">EditorConfig配置文件长啥样？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件示例"><span class="nav-number">2.1.</span> <span class="nav-text">配置文件示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上面这些写在配置文件中的文件搁哪呢？"><span class="nav-number">2.2.</span> <span class="nav-text">上面这些写在配置文件中的文件搁哪呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件格式细节"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件格式细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符模式"><span class="nav-number">2.3.1.</span> <span class="nav-text">通配符模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持的属性"><span class="nav-number">2.3.2.</span> <span class="nav-text">支持的属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不需要安装插件的编辑器（IDE）"><span class="nav-number">3.</span> <span class="nav-text">不需要安装插件的编辑器（IDE）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要下载安装插件的编辑器（IDE）"><span class="nav-number">4.</span> <span class="nav-text">需要下载安装插件的编辑器（IDE）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贡献EditorConfig"><span class="nav-number">5.</span> <span class="nav-text">贡献EditorConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反馈给我们"><span class="nav-number">5.1.</span> <span class="nav-text">反馈给我们</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建插件"><span class="nav-number">5.2.</span> <span class="nav-text">创建插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主要贡献者"><span class="nav-number">6.</span> <span class="nav-text">主要贡献者</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">肖大宝</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xiaodabao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

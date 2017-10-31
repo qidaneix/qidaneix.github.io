@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108899056-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108899056-1');
+  </script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,代码版本维护,github,代码托管平台," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="time machine" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="教两个小朋友使用git进行代码版本维护以及github进行代码托管 本地git库配置 新建文件夹，用于存放课件 打开命令行运行窗口（cmd/shell/git均可） 在命令行内运行cd 路径命令使命令行至文件夹所在路径 运行命令git init初始化git，将文件夹由git负责版本管理 将课件移动到文件夹内 运行命令git add *及git commit -m &amp;#39;第一次提交&amp;#39;，本">
+<meta name="keywords" content="git,代码版本维护,github,代码托管平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git及github简单使用（以上传教学课件为例）">
+<meta property="og:url" content="http://blog.xiaodabao.xyz/2017/02/20/easy-git/index.html">
+<meta property="og:site_name" content="time machine">
+<meta property="og:description" content="教两个小朋友使用git进行代码版本维护以及github进行代码托管 本地git库配置 新建文件夹，用于存放课件 打开命令行运行窗口（cmd/shell/git均可） 在命令行内运行cd 路径命令使命令行至文件夹所在路径 运行命令git init初始化git，将文件夹由git负责版本管理 将课件移动到文件夹内 运行命令git add *及git commit -m &amp;#39;第一次提交&amp;#39;，本">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-1.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-2.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-3.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-4.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-22.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-5.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-6.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-7.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-8.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-9.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-10.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-11.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-12.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-13.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-14.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-15.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-16.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-17.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-19.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-18.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-20.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-21.png">
+<meta property="og:image" content="http://oiml7svqr.bkt.clouddn.com/step-23.png">
+<meta property="og:updated_time" content="2017-10-31T08:29:46.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git及github简单使用（以上传教学课件为例）">
+<meta name="twitter:description" content="教两个小朋友使用git进行代码版本维护以及github进行代码托管 本地git库配置 新建文件夹，用于存放课件 打开命令行运行窗口（cmd/shell/git均可） 在命令行内运行cd 路径命令使命令行至文件夹所在路径 运行命令git init初始化git，将文件夹由git负责版本管理 将课件移动到文件夹内 运行命令git add *及git commit -m &amp;#39;第一次提交&amp;#39;，本">
+<meta name="twitter:image" content="http://oiml7svqr.bkt.clouddn.com/step-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.xiaodabao.xyz/2017/02/20/easy-git/"/>
+
+
+
+
+
+  <title>git及github简单使用（以上传教学课件为例） | time machine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">time machine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光机</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'qnVLz9vtPsfc-1LWUsJy','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.xiaodabao.xyz/2017/02/20/easy-git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖大宝">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sb.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="time machine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git及github简单使用（以上传教学课件为例）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T11:39:42+08:00">
+                2017-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术周边/" itemprop="url" rel="index">
+                    <span itemprop="name">技术周边</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/20/easy-git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/easy-git/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>教两个小朋友使用git进行代码版本维护以及github进行代码托管</strong></p>
+<h1 id="本地git库配置"><a href="#本地git库配置" class="headerlink" title="本地git库配置"></a>本地git库配置</h1><ol>
+<li>新建文件夹，用于存放课件<br><img src="http://oiml7svqr.bkt.clouddn.com/step-1.png" alt="step-1"></li>
+<li>打开命令行运行窗口（cmd/shell/git均可）<br><img src="http://oiml7svqr.bkt.clouddn.com/step-2.png" alt="step-2"></li>
+<li>在命令行内运行<code>cd 路径</code>命令使命令行至文件夹所在路径<br><img src="http://oiml7svqr.bkt.clouddn.com/step-3.png" alt="step-3"></li>
+<li>运行命令<code>git init</code>初始化git，将文件夹由git负责版本管理<br><img src="http://oiml7svqr.bkt.clouddn.com/step-4.png" alt="step-4"></li>
+<li>将课件移动到文件夹内<br><img src="http://oiml7svqr.bkt.clouddn.com/step-22.png" alt="step-22"></li>
+<li>运行命令<code>git add *</code>及<code>git commit -m &#39;第一次提交&#39;</code>，本地git库配置完成<br><img src="http://oiml7svqr.bkt.clouddn.com/step-5.png" alt="step-5"></li>
+</ol>
+<h1 id="新建github库"><a href="#新建github库" class="headerlink" title="新建github库"></a>新建github库</h1><ol>
+<li>打开github，登录<br><img src="http://oiml7svqr.bkt.clouddn.com/step-6.png" alt="step-6"></li>
+<li>点击头像，点击“your profile”<br><img src="http://oiml7svqr.bkt.clouddn.com/step-7.png" alt="step-7"></li>
+<li>点击组织<br><img src="http://oiml7svqr.bkt.clouddn.com/step-8.png" alt="step-8"></li>
+<li>点击“new”，新建库<br><img src="http://oiml7svqr.bkt.clouddn.com/step-9.png" alt="step-9"></li>
+<li>在新建库界面填写相关信息（库名建议与文件夹名同名），点击“Create repository”<br><img src="http://oiml7svqr.bkt.clouddn.com/step-10.png" alt="step-10"></li>
+<li>页面跳转到库界面，点击“add teams and collaborators”<br><img src="http://oiml7svqr.bkt.clouddn.com/step-11.png" alt="step-11"></li>
+<li>点击添加team,选择我们的组，使我们的组成员可以看到库<br><img src="http://oiml7svqr.bkt.clouddn.com/step-12.png" alt="step-12"></li>
+<li>修改一下权限，使我们的组成员可以维护（可以执行clone，commit等操作）库，github库配置完成<br><img src="http://oiml7svqr.bkt.clouddn.com/step-13.png" alt="step-13"></li>
+</ol>
+<h1 id="本地git库与托管平台github库关联"><a href="#本地git库与托管平台github库关联" class="headerlink" title="本地git库与托管平台github库关联"></a>本地git库与托管平台github库关联</h1><ol>
+<li>回到‘code’界面，复制刚才新建的github库的https地址<br><img src="http://oiml7svqr.bkt.clouddn.com/step-14.png" alt="step-14"></li>
+<li>回到命令行，运行命令<code>git remote add origin https://github.com/webend-learner/ES3ES5ES6-learn.git</code>，注意要改成自己的建的github库地址，完成本地库与托管平台github库的关联<br><img src="http://oiml7svqr.bkt.clouddn.com/step-15.png" alt="step-15"></li>
+<li>运行命令<code>git push -u origin master</code>，输入github账户及密码（可能会出现此步骤），将本地内容推送到托管平台<br><img src="http://oiml7svqr.bkt.clouddn.com/step-16.png" alt="step-16"></li>
+<li>刷新github新建库的界面，可以看到本地的内容已经提交到托管平台了<br><img src="http://oiml7svqr.bkt.clouddn.com/step-17.png" alt="step-17"></li>
+<li>一般都会给库新建一个README.md文件作为库的说明页面，在本地新建README.md文件写入(这里写你自己想写的内容)：<br><img src="http://oiml7svqr.bkt.clouddn.com/step-19.png" alt="step-19"><br><img src="http://oiml7svqr.bkt.clouddn.com/step-18.png" alt="step-18"></li>
+<li>执行<code>git add *</code>，<code>git commit -m &#39;提交README.md&#39;</code>，<code>git push -u origin master</code>三个命令，完成将README.md提交到托管平台<br><img src="http://oiml7svqr.bkt.clouddn.com/step-20.png" alt="step-20"></li>
+<li>刷新github库界面，可以看到界面底部已经有介绍内容<br><img src="http://oiml7svqr.bkt.clouddn.com/step-21.png" alt="step-21"></li>
+<li>之后有任何新内容需要提交，重复21步的三个命令即可，或者使用SourceTree，使用可视化工具进行相关操作。<br><img src="http://oiml7svqr.bkt.clouddn.com/step-23.png" alt="step-23"></li>
+</ol>
+<hr>
+<p><em>附上两个git教程（侵删）：</em></p>
+<blockquote>
+<ul>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的git入门教程</a>，用于git入门学习（已足够日常使用）</li>
+<li><a href="http://www.bootcss.com/p/git-guide/" target="_blank" rel="external">git-简易指南</a>，用于快速查询常用git指令</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/代码版本维护/" rel="tag"># 代码版本维护</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+            <a href="/tags/代码托管平台/" rel="tag"># 代码托管平台</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/hi-my-friend/" rel="next" title="凤凰花开的路口">
+                <i class="fa fa-chevron-left"></i> 凤凰花开的路口
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/19/scaffold-of-angularJs/" rel="prev" title="angular+webpack项目脚手架">
+                angular+webpack项目脚手架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/20/easy-git/"
+           data-title="git及github简单使用（以上传教学课件为例）" data-url="http://blog.xiaodabao.xyz/2017/02/20/easy-git/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/sb.jpg"
+               alt="肖大宝" />
+          <p class="site-author-name" itemprop="name">肖大宝</p>
+           
+              <p class="site-description motion-element" itemprop="description">我觉得我还需要学习一点人生的经验</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本地git库配置"><span class="nav-number">1.</span> <span class="nav-text">本地git库配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建github库"><span class="nav-number">2.</span> <span class="nav-text">新建github库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地git库与托管平台github库关联"><span class="nav-number">3.</span> <span class="nav-text">本地git库与托管平台github库关联</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">肖大宝</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xiaodabao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
