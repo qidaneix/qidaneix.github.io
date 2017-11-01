@@ -7,6 +7,15 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108899056-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '这里是网站的标识，是不能告诉你们滴');
+  </script>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -283,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/31/test-google-tag-manager/" itemprop="url">test-google-tag-manager</a></h1>
+                <a class="post-title-link" href="/2017/10/31/test-google-tag-manager/" itemprop="url">学习google强大的埋点工具——google tag manager</a></h1>
         
 
         <div class="post-meta">
@@ -345,7 +354,10 @@
       
         
           
-            <h1 id="学习google强大的埋点工具——google-tag-manager"><a href="#学习google强大的埋点工具——google-tag-manager" class="headerlink" title="学习google强大的埋点工具——google  tag manager"></a>学习google强大的埋点工具——google  tag manager</h1><h2 id="首先，看看这个博客还能不能正常使用"><a href="#首先，看看这个博客还能不能正常使用" class="headerlink" title="首先，看看这个博客还能不能正常使用"></a>首先，看看这个博客还能不能正常使用</h2>
+            <h1 id="学习google强大的埋点工具——google-tag-manager"><a href="#学习google强大的埋点工具——google-tag-manager" class="headerlink" title="学习google强大的埋点工具——google  tag manager"></a>学习google强大的埋点工具——google  tag manager</h1><h2 id="首先，看看这个博客还能不能正常使用"><a href="#首先，看看这个博客还能不能正常使用" class="headerlink" title="首先，看看这个博客还能不能正常使用"></a>首先，看看这个博客还能不能正常使用</h2><p>哈哈，为什么这么说呢？因为我已经很久很久没有写过博客了，因为从今年大概5月份开始接手中审联的开发工作到现在，一直处在忙忙碌碌的事情。</p>
+<h2 id="现在正式开讲"><a href="#现在正式开讲" class="headerlink" title="现在正式开讲"></a>现在正式开讲</h2><p>google tag manager是一个强大的网站信息收集工具，并且在国内也能使用（目测），我就在我的博客上埋了gtm的代码，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">"https://www.googletagmanager.com/gtag/js?id=这里是网站的标识"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">  window.dataLayer = window.dataLayer || [];</span></div><div class="line"><span class="undefined">  function gtag()&#123;dataLayer.push(arguments);&#125;</span></div><div class="line"><span class="undefined">  gtag('js', new Date());</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">  gtag('config', '这里是网站的标识');</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+
           
         
       
